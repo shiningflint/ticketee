@@ -18,6 +18,7 @@ RSpec.feature "Users can create new tickets" do
   end
 
   scenario "with invalid attributes" do
+    fill_in "Name", with: ""
     click_button "Create Ticket"
 
     expect(page).to have_content "Ticket has not been created."
