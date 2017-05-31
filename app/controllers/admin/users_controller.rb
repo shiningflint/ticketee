@@ -16,7 +16,7 @@ class Admin::UsersController < Admin::ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = "User has been created."
-      redirect_to [:admin, @user]
+      redirect_to admin_users_path
     else
       flash.now[:alert] = "User has not been created."
       render "new"
@@ -25,7 +25,7 @@ class Admin::UsersController < Admin::ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:email, :password)
+      params.require(:user).permit(:email, :password, :admin)
     end
 
     def set_user
