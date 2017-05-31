@@ -1,0 +1,15 @@
+<h1>Users List</h1>
+
+<div class="links">
+  <ul>
+    <li><%= link_to "New User", new_admin_user_path %></li>
+  </ul>
+</div>
+
+<div class="users">
+  <ul>
+    <% @users.each do |user| %>
+    <li><%= link_to user.email, admin_user_path(user) %></li>
+    <% end %>
+  </ul>
+</div>
