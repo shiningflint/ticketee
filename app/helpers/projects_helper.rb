@@ -1,4 +1,5 @@
 module ProjectsHelper
+
   def title(*parts)
     unless parts.empty?
       content_for :title do
@@ -6,4 +7,5 @@ module ProjectsHelper
       end
     end
   end
+
 end
