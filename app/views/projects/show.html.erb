@@ -3,7 +3,7 @@
 <p><%= @project.description %></p>
 <p><%= link_to "Edit Project", edit_project_path(@project), class: "button" %></p>
 <p><%= link_to "Delete Project",
-    project_path(@project),
+    admin_project_path(@project),
     method: :delete,
     data: { confirm: "Are you sure you want to delete this project?" },
     class: "button button-alert" %></p>
