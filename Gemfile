@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 2.5'
 #Use Authentication gem
 gem 'devise', '~> 4.3.0'
 
+#authorization gem Pundit
+gem 'pundit', '~> 1.1.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
