@@ -6,6 +6,7 @@ class TicketsController < ApplicationController
   end
 
   def edit
+    authorize @ticket, :show?
   end
 
   def new
