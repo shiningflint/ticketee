@@ -1,8 +1,11 @@
 require "rails_helper"
 
 RSpec.feature "Users can edit projects" do
+  let(:user) { FactoryGirl.create(:user) }
   before do
+    login_as user
     project = FactoryGirl.create(:project, name: "Sublime Text 3")
+    assign_role!(user, :viewer, project)
 
     visit "/"
     click_link "Sublime Text 3"
@@ -24,7 +27,7 @@ RSpec.feature "Users can edit projects" do
   scenario "Edit the project with invalid attributes" do
     fill_in "Name", with: ""
     click_button "Update Project"
-    
+
     expect(page).to have_content "Project has not been updated."
     expect(page).to have_content "Name can't be blank"
   end

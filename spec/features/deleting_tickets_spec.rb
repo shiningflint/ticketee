@@ -5,8 +5,13 @@ RSpec.feature "Users can delete exisiting tickets" do
   let(:project) { FactoryGirl.create(:project) }
   let(:ticket) { FactoryGirl.create(:ticket, project: project, author: author) }
 
-  scenario "Deleting ticket successfully" do
+  before do
+    assign_role!(author, :viewer, project)
+    login_as author
     visit project_ticket_path(project, ticket)
+  end
+
+  scenario "Deleting ticket successfully" do
     click_link "Delete Ticket"
 
     expect(page).to have_content "Ticket has been deleted."

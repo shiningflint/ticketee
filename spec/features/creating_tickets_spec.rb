@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.feature "Users can create new tickets" do
   let!(:user) { FactoryGirl.create(:user) }
   before do
-    project = FactoryGirl.create(:project, name: "Sublime Text 3")
-
     login_as(user)
+    project = FactoryGirl.create(:project, name: "Sublime Text 3")
+    assign_role!(user, :viewer, project)
+
     visit project_path(project)
     click_link "New Ticket"
   end

@@ -10,10 +10,14 @@ RSpec.feature "Users can view tickets" do
     FactoryGirl.create(:ticket, name: "Video update", project: piehole, description: "Update the new video to put on the top page", author: author)
     FactoryGirl.create(:ticket, name: "Photo update", project: piehole, description: "Put the new photo to put on the top page", author: author)
 
+    login_as author
+    assign_role!(author, :viewer, icraft)
+    assign_role!(author, :viewer, piehole)
+
     visit "/"
   end
 
-  scenario "for a given project" do
+  scenario "for iCRaFT project" do
     click_link "iCRaFT"
 
     expect(page).to have_content "Slider price update"
@@ -28,5 +32,12 @@ RSpec.feature "Users can view tickets" do
     end
 
     expect(page).to have_content "More prices to update for the slider"
+  end
+
+  scenario "for piehole project" do
+    click_link "piehole"
+
+    expect(page).to have_content "Video update"
+    expect(page).to have_content "Photo update"
   end
 end
