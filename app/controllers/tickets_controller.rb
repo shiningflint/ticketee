@@ -6,7 +6,7 @@ class TicketsController < ApplicationController
   end
 
   def edit
-    authorize @ticket, :show?
+    authorize @ticket, :update?
   end
 
   def new
@@ -29,6 +29,8 @@ class TicketsController < ApplicationController
   end
 
   def update
+    authorize @ticket, :update?
+
     if @ticket.update(ticket_params)
       flash[:notice] = "Ticket has been updated."
       redirect_to project_ticket_path(@project, @ticket)
