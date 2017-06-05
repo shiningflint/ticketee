@@ -22,6 +22,8 @@
     <% end %>
   </ul>
   <ul id="actions">
+    <% if policy(Ticket.new(project: @project)).create? %>
     <li><%= link_to "New Ticket", new_project_ticket_path(@project), class: "button" %></li>
+    <% end %>
   </ul>
 </header>
