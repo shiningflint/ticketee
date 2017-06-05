@@ -7,5 +7,7 @@
     <% if policy(@ticket).update? %>
     <p><%= link_to "Edit Ticket", edit_project_ticket_path(@project, @ticket), class: "edit" %></p>
     <% end %>
+    <% if policy(@ticket).destroy? %>
     <p><%= link_to "Delete Ticket", project_ticket_path(@project, @ticket), method: :delete, data: {confirm: 'Delete this '+@ticket.name+' ticket?'} %></p>
+    <% end %>
 </div>
